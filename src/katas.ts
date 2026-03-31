@@ -72,15 +72,34 @@ export function filterAdults(json: string): Person[] {
 }
 
 export function totalPrice(json: string): number {
+  const data = JSON.parse(json) as Product[];
 
-  notImplemented("totalPrice");
+//   function reducer(accumulator:number, currentValue:Product, index:number):number {
+//   const returns = accumulator + currentValue.price;
+//   console.log(
+//     `accumulator: ${accumulator}, currentValue: ${currentValue}, index: ${index}, returns: ${returns}`,
+//   );
+//     return returns;
+// }
+// return data.reduce(reducer)
+
+return data.reduce((acc, n) => acc + n.price, 0 )
 }
 
 export function discountedTitles(json: string): string[] {
-  notImplemented("discountedTitles");
+  const data = JSON.parse(json) as Product[];
+  return data
+    .filter((item) => item.onSale)
+    .map((item) => item.title.toLowerCase())
 }
 
+// Solve the remaining problems without using if!
+
 export function averageScore(json: string): number {
+  const data = JSON.parse(json) as ScoreEntry[];
+
+  // return data.reduce((f, n) => (f + n.score)/n.score.length(), 0)
+
   notImplemented("averageScore");
 }
 
@@ -88,6 +107,7 @@ export function countByDepartment(json: string): Record<string, number> {
   notImplemented("countByDepartment");
 }
 
+// try solving with and without set
 export function uniqueTags(json: string): string[] {
   notImplemented("uniqueTags");
 }
