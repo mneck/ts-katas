@@ -65,21 +65,14 @@ export function namesUppercase(json: string): string[] {
 }
 
 export function filterAdults(json: string): Person[] {
-  const data = JSON.parse(json);
+  const data = JSON.parse(json) as Person[];
 
+  return data.filter((person) => person.age >= 18)
 
-  
-//   var newArr = data.map((obj) => { if 
-//     (obj.age >= 18) {
-//       return obj.age;
-//     }
-//   });
-// return newArr;
-
-  // notImplemented("filterAdults");
 }
 
 export function totalPrice(json: string): number {
+
   notImplemented("totalPrice");
 }
 
